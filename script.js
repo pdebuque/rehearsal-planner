@@ -38,16 +38,34 @@ function setUpRehearsal() {
     }
 }
 
+
+
 function addSection() {
     console.log('in addSection');
 
-    $('#rehearsalSections').html(
-        `<div class='rehearsalSection'>`
+    // create html
+    $('#rehearsalSections').append(
+        `<div id='draggable' class='rehearsalSection ui-widget-content'>
+<p>
+<span class='sectionSpan'>${sectionStart}-${sectionStart + $('#sectionLength').val()}</span> <span class='sectionDuration'>(${$('#sectionLength').val()}m)</span>: ${$('#sectionName').val()}
+</p>
+<p>
+${$('sectionInfo').val()}
+</p>
+
+
+        </div>`
     )
-
-
+    //make the new section draggable
+    $(function () {
+        $('#draggable').draggable()
+    });
     //update section start
     sectionStart += $('#sectionLength').val()
 
     // clear inputs
+    $('#sectionName').val('');
+    $('#sectionLength').val(null);
+    $('#sectionInfo').val('');
+
 }

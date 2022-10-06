@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Rehearsal planning</title>
+    <link rel="stylesheet" href="jquery-ui.min.css">
     <link rel="stylesheet" href="style.css">
+
     <script src="jquery-3.6.1.min.js"></script>
     <script src="script.js"></script>
 
@@ -18,21 +20,29 @@
     <div class="questionaire">
         <div class="generalQuestions">
             <h2>about the rehearsal</h2>
-            <div>Rehearsal number <input type="text" name="rehearsalNumber" id="rehearsalNumber"></div>
-            <div>Rehearsal date <input type="text" name="rehearsalDate" id="rehearsalDate"></div>
-            <div>Rehearsal start time <input type="text" name="rehearsalStart" id="rehearsalStart"></div>
-            <div>Rehearsal end time <input type="text" name="rehearsalEnd" id="rehearsalEnd"></div>
+            <div>Ensemble <input type="text" name="ensembleName" id="ensembleName"></div>
+            <div>Rehearsal number <input type="number" name="rehearsalNumber" id="rehearsalNumber"></div>
+            <div>Rehearsal date <input type="date" name="rehearsalDate" id="rehearsalDate"></div>
+            <div>Rehearsal start time <input type="time" name="rehearsalStart" id="rehearsalStart"></div>
+            <div>Rehearsal end time <input type="time" name="rehearsalEnd" id="rehearsalEnd"></div>
             <button id="generalButton">submit</button>
         </div>
         <div class="newSection">
             <h2>add rehearsal section</h2>
-            <div>name of section <input type="text" name="" id=""></div>
-            <div>section length <input type="text" name="" id=""></div>
-            <div>section notes <input type="text" name="" id=""></div>
+            <div>name of section <input type="text" name="sectionName" id="sectionName"></div>
+            <div>section length <input type="text" name="sectionLength" id="sectionLength"></div>
+            <div>section notes <input type="text" name="sectionInfo" id="sectionInfo"></div>
             <button id="sectionButton">submit</button>
         </div>
     </div>
 
+    <div id="rehearsalHeader"></div>
+    <div id="rehearsalSections"></div>
+
+    <div class="rehearsalSection">
+        <p><span>$('</span></p>
+
+    </div>
 
 
 </body>

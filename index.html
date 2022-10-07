@@ -9,6 +9,7 @@
     <title>Rehearsal planning</title>
     <link rel="stylesheet" href="jquery-ui.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
     <script src="jquery-3.6.1.min.js"></script>
     <script src="jquery-ui.min.js"> </script>
     <script src="script.js"></script>
@@ -19,19 +20,23 @@
     <h1>rehearsal planning</h1>
     <div class="questionaire">
         <div class="generalQuestions">
-            <h2>about the rehearsal</h2>
-            <div>Ensemble <input type="text" name="ensembleName" id="ensembleName"></div>
-            <div>Rehearsal number <input type="number" name="rehearsalNumber" id="rehearsalNumber"></div>
-            <div>Rehearsal date <input type="date" name="rehearsalDate" id="rehearsalDate"></div>
-            <div>Rehearsal start time <input type="time" name="rehearsalStart" id="rehearsalStart"></div>
-            <div>Rehearsal end time <input type="time" name="rehearsalEnd" id="rehearsalEnd"></div>
-            <button id="generalButton">create rehearsal</button>
+            <div class="aboutRehearsal">
+                <h2>about the rehearsal</h2>
+            </div>
+            <div class="rehearsalQuestions">
+                <div>Ensemble <input type="text" name="ensembleName" id="ensembleName"></div>
+                <div>Rehearsal number <input type="number" name="rehearsalNumber" id="rehearsalNumber"></div>
+                <div>Rehearsal date <input type="date" name="rehearsalDate" id="rehearsalDate"></div>
+                <div>Rehearsal start time <input type="time" name="rehearsalStart" id="rehearsalStart"></div>
+                <div>Rehearsal end time <input type="time" name="rehearsalEnd" id="rehearsalEnd"></div>
+                <button id="generalButton">create rehearsal</button>
+            </div>
         </div>
         <div class="newSection">
             <h2>add rehearsal section</h2>
             <div>name of section <input type="text" name="sectionName" id="sectionName"></div>
-            <div>section length <input type="number" name="sectionLengthHour" id="sectionLengthHour">h<input
-                    type="number" name="sectionLengthMinute" id="sectionLengthMinute">m</div>
+            <div>section length (minutes): <input type="number" name="sectionLengthMinute" id="sectionLengthMinute">
+            </div>
             <div>section notes <input type="text" name="sectionInfo" id="sectionInfo"></div>
             <button id="sectionButton">create section</button>
         </div>

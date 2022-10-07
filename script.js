@@ -8,6 +8,39 @@ function readyNow() {
     $('#sectionButton').on('click', addSection)
 }
 
+//function to make working with time data easier. format hh:mm --> minutes
+//time is given as a string
+const sampleTime = "02:45";
+const sampleMinutes = 400;
+
+function timeToMinutes(time) {
+
+    const hours = Number(time[0] + time[1]);
+    const minutes = Number(time[3] + time[4]);
+    const convertedTime = hours * 60 + minutes;
+
+    return convertedTime
+}
+
+//change minutes back to the string time format.
+//this seems way mesier than it needs to be. dealing with time may need some refactoring/cleaning up later.
+
+function minutesToTime(minutes) {
+
+    let hours = String(Math.floor(minutes / 60));
+    if (hours.length < 2) {
+        hours = "0" + hours;
+    }
+    const convertedMinutes = minutes % 60;
+    while (convertedMinutes.length < 2) {
+        convertedMinutes = "0" + convertedMinutes;
+    }
+    const convertedTime = hours + ':' + convertedMinutes;
+
+    return convertedTime
+}
+
+
 let sectionStart = 0;
 
 function setUpRehearsal() {
@@ -27,7 +60,7 @@ function setUpRehearsal() {
 
         //update section start time for use in section addition
 
-        sectionStart = $('#rehearsalStart').val();
+        sectionStart = timeToMinutes($('#rehearsalStart').val());
 
         //clear inputs
         $('#ensembleName').val('');
@@ -39,33 +72,54 @@ function setUpRehearsal() {
 }
 
 
-
 function addSection() {
     console.log('in addSection');
 
+    const endTimeMinutes = sectionStart + Number($('#sectionLengthMinute').val());
+    //create section object
+
+    const rhslSection = {
+        name: $('#sectionName').val(),
+        duration: $('#sectionLengthMinute').val(),
+        startTimeString: minutesToTime(sectionStart),
+        startTimeMinutes: sectionStart,
+        endTimeString: minutesToTime(endTimeMinutes),
+        endTimeMinutes: endTimeMinutes,
+        sectionInfo: $('sectionInfo').val()
+    }
+
+    console.log(rhslSection);
+
     // create html
     $('#rehearsalSections').append(
-        `<div id='draggable' class='rehearsalSection ui-widget-content'>
-<p>
-<span class='sectionSpan'>${sectionStart}-${sectionStart + $('#sectionLength').val()}</span> <span class='sectionDuration'>(${$('#sectionLength').val()}m)</span>: ${$('#sectionName').val()}
-</p>
-<p>
-${$('sectionInfo').val()}
-</p>
+        `<div id='${rhslSection.sectionName}' class='rehearsalSection ui-widget-content'>
+            <p>
+                <span class='sectionSpan'>${rhslSection.startTimeString}-${rhslSection.endTimeString}</span> <span class='sectionDuration'>(${rhslSection.duration}m)</span>: ${$('#sectionName').val()}
+            </p>
+            <p>
+                ${rhslSection.sectionInfo}
+            </p>
 
 
         </div>`
     )
     //make the new section draggable
     $(function () {
-        $('#draggable').draggable()
-    });
+        $('.rehearsalSection').draggable({
+            containment: 'parent',
+            snap: true,
+            cursor: 'move',
+            stack: '#rehearsalSections'
+        })
+    })
     //update section start
-    sectionStart += $('#sectionLength').val()
+    sectionStart += rhslSection.duration;
 
     // clear inputs
     $('#sectionName').val('');
-    $('#sectionLength').val(null);
+    $('#sectionLengthHour').val(null);
+    $('#sectionLengthMinute').val(null);
     $('#sectionInfo').val('');
 
 }
+

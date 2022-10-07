@@ -1,7 +1,88 @@
-#draggable {
+:root {
+    --headerFont: 'Roboto';
+    --paragraphFont: 'Cabin'
+}
 
-    width: 150px;
-    height: 150px;
+
+h1 {
+    font-family: var(--headerFont);
+    margin: .5em;
+}
+
+h2 {
+    margin-block-start: .2em;
+    margin-block-end: .2em;
+
+}
+
+/* about the rehearsal section */
+
+
+
+.generalQuestions {
+    font-family: var(--paragraphFont);
+    border: 2px solid black;
+    margin: .5em;
+    padding: .5em;
+}
+
+.generalQuestions div {
+    padding: .1em;
+}
+
+.aboutRehearsal {
+    font-family: var(--headerFont);
+}
+
+#rehearsalNumber {
+    width: 30px;
+}
+
+/* add rehearsal section */
+
+.newSection {
+    font-family: var(--paragraphFont);
+    border: 2px solid black;
+    padding: .5em;
+    margin: .5em;
+}
+
+.newSection h2 {
+    font-family: var(--headerFont);
+}
+
+.newSection div {
+    padding: .1em;
+}
+
+#sectionLengthHour {
+    width: 25px;
+}
+
+#sectionLengthMinute {
+    width: 30px;
+}
+
+
+/* each rehearsal section */
+
+.rehearsalSection {
     padding: 0.5em;
+    font-family: var(--paragraphFont);
+    border: 2px solid black;
+    margin: .5em;
+}
 
+.rehearsalSection:hover {
+    background-color: lightgrey;
+}
+
+.rehearsalSection:active {
+    box-shadow: 10px 5px 5px lightgrey;
+    transform: translate(-2px, -2px);
+
+}
+
+.sectionDuration {
+    font-weight: bold;
 }

@@ -71,6 +71,7 @@ function setUpRehearsal() {
     }
 }
 
+const rhslSectionsArray = [];
 
 function addSection() {
     console.log('in addSection');
@@ -89,6 +90,9 @@ function addSection() {
     }
 
     console.log(rhslSection);
+    // add to array of all sections
+    rhslSectionsArray.push(rhslSection);
+    console.log(rhslSectionsArray);
 
     // create html
     $('#rehearsalSections').append(
